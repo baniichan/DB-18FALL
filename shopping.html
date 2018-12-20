@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+	<head>
+		<title>图书购买</title>
+		<meta charset="utf-8">
+		<style>
+			#search
+			{
+				text-align:center;
+				margin-top:50px;
+			}
+			#all
+			{
+				margin-top:50px;
+				text-align:center;
+			}
+			#type
+			{
+				margin:auto;
+				text-align:center;
+			}
+			td
+			{
+				padding:10px;
+			}
+			a:link {color:mediumblue;}      
+			a:visited {color:mediumblue;} 
+			a:hover {color:darkblue;}
+			a:active {color:darkblue;}
+		</style>
+	</head>
+	<body>
+		<div id="top" style="height:20px">
+			<div style="float:left; text-align:left"><a href="welcome.html">返回个人页</a></div>
+			<div style="float:right; text-align:right"><a href="viewshoppingcart.php">查看购物车</a></div>
+		</div>
+		<div id = "search">
+			<form action="chooseSearchMethod.php" method="get">
+				<input type="text" name="word" placeholder="请输入关键词">
+				<select name="type">
+				<option value="bookname">书名搜索</option>
+				<option value="author">作者搜索</option>
+				<input name="submit" type="submit" value="搜索">
+				</select>
+			</form>
+		</div>
+		<div id="all">
+			<h3><a href="displayAllBook.php" target="_blank">全部分类</a></h3>
+		</div>
+		<table id="type">
+			<caption><h3>图书分类</h3></caption>
+			<tr>
+				<td><a href="typeProcess.php?type='诗歌'" target="_blank">诗歌</a></td><td><a href="typeProcess.php?type='散文'" target="_blank">散文</a></td><td><a href="typeProcess.php?type='小说'" target="_blank">小说</a></td>
+			</tr>
+			<tr>
+				<td><a href="typeProcess.php?type='文学'" target="_blank">文学</a></td><td><a href="typeProcess.php?type='历史'" target="_blank">历史</a></td><td><a href="typeProcess.php?type='哲学'" target="_blank">哲学</a></td>
+			</tr>
+				<td><a href="typeProcess.php?type='艺术'" target="_blank">艺术</a></td><td><a href="typeProcess.php?type='设计'" target="_blank">设计</a></td><td><a href="typeProcess.php?type='教材'" target="_blank">教材</a></td>
+			<tr>
+				<td><a href="typeProcess.php?type='外国小说'" target="_blank">外国小说</a></td><td><a href="typeProcess.php?type='科技'" target="_blank">科技</a></td><td><a href="typeProcess.php?type='人物传记'" target="_blank">人物传记</a></td>
+			</tr>
+			<tr>
+				<td></td><td><a href="typeProcess.php?type='其他'" target="_blank">其他</a></td>
+			</tr>
+		</table>
+	</body>
+</html>
