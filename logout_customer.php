@@ -2,19 +2,20 @@
 <html>
 	<head>
 		<meta charset="utf-8">
+		<meta http-equiv="refresh" content="3;url=login_customer.html">
 		<title>退出系统</title>
 	</head>
 		
 	<body>
 		
 <?php
-    session_start();
-	$_SESSION = array();
-	if (isset($_COOKIE[session_name()])) {
-		setcookie(session_name(), '', time()-42000, '/');
+	if (isset($_COOKIE['u_id'])) {
+		setcookie('u_id','$_userid',time()-1);
+		header("Location: login_customer.html");
 	}
-	session_destroy();
-	echo "<script>location.href='index.html';</script>";
+	else{
+		echo "您未登录，3秒后转至登录页";
+	}
 ?>
 		
 	</body>

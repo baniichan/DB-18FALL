@@ -37,8 +37,9 @@ $day=date('d');
 $hour=date('H');
 $minute=date('i');
 $second=date('s');
-$sq2 = "INSERT INTO orderALL(UserNo, year, month,day,hour,minute,second) 
-	VALUES ($_userid, '$year', '$month','$day','$hour','$minute','$second')";  #ok #这里变量要加引号，不然会进行计算
+$address=$_POST['Address'];
+$sq2 = "INSERT INTO orderALL(UserNo,year, month,day,hour,minute,second,address) 
+	VALUES ($_userid, '$year', '$month','$day','$hour','$minute','$second','$address')";  #ok #这里变量要加引号，不然会进行计算
 $sq3 = "CREATE table temp(OrderNO INT)"; #ok
 $sq41 = "SELECT max(OrderNo) AS num from orderALL";
 

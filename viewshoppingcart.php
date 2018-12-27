@@ -1,11 +1,11 @@
 <!doctype html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<title>购物车</title>
-	</head>
+<head>
+    <meta charset="utf-8">
+    <title>购物车</title>
+</head>
 
-	<body>
+<body>
 
 <?php
 	global $_userid;
@@ -60,21 +60,40 @@
 		echo '</tr>';
 		echo '</form>';
 	}
-		echo '<form action="pay.php" method="post">';
+
 		echo '<tr>';
 		echo'<td></td>';
 		echo'<td></td>';
 		echo'<td></td>';
 		echo'<td></td>';
 		echo'<td>'.$totalPrice.'¥</td>';
-		echo'<td>'.'<input name="submit" type="submit" value="结账">';
+				echo'<td></td>';
+
 		echo '</tr>';
-		echo '</form>'; 
 		echo '<p><a href="displayAllBook.php">返回图书列表</a></p>';
-/*———————————————————————————————————————————————————————————————————*/	
+
+		// address and pay
+
+		echo '<table border="1" width="900" align="center" cellpadding="10">';	// 表格样式
+	    echo '<caption><h1>选择地址</h1></caption>';	// 表格标题
+		$sql3 = "SELECT address1,address2,address3 FROM userinfo WHERE userno=$_userid";
+	    $result3 = mysqli_query($conn,$sql3);
+		while($row = mysqli_fetch_array($result3)){
+            echo '<form action="pay.php" method="post">';
+            echo '<tr>';
+            echo '<td><label><input name="Address" type="radio" value='.$row['address1'].' />'.$row['address1'].'</label></td> ';
+            echo '<td><label><input name="Address" type="radio" value='.$row['address2'].' />'.$row['address2'].'</label></td> ';
+            echo '<td><label><input name="Address" type="radio" value='.$row['address3'].' />'.$row['address3'].'</label></td> ';
+            echo'<td>'.'<input name="submit" type="submit" value="结账">';
+            echo '</tr>';
+            echo '</form>';
+
+        }
+
+/*———————————————————————————————————————————————————————————————————*/
 	// 关闭连接
 	mysqli_close($conn); 
 ?>
-	
-	</body>
+
+</body>
 </html>
