@@ -147,8 +147,8 @@
 		echo '<tr>';
 			echo '<form action="shoppingcart.php" method="post">';
 				echo '<td>' . $row['ISBN'] . '</td>';
-				echo '<td name="bookname">' . $row['BookName'] . '</td>';
-				echo '<td name="discountprice">' . $row['Price']*  $row['discount']. "¥" .'</td>';
+				echo '<td>' . $row['BookName'] . '</td>';
+				echo '<td>' . '¥ '. $row['Price']*  $row['discount'] .'</td>';
 				echo '<input name="ISBN" value=' . $row['ISBN'] . '   type="hidden">';
 				echo '<td class="submit">' . '<input name="quantity" type="number" min="0">' . '</td>';
 				echo '<td class="submit">' . '<input name="submit" type="submit" value="加入购物车">'. '</td>';
