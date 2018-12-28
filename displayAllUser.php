@@ -30,6 +30,7 @@
 	</head>
 	
 	<body>
+		<a href="manage_user.html" style="margin-left:10px;">返回</a>
 		<table id = "table">
 		<caption><h2>全部用户</h2></caption>
 			<tr class="firstrow">

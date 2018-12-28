@@ -4,12 +4,8 @@
     $username = "root";
     $password = "root";
     $dbname = "book";
-
+    global $_userid;
     $_userid = $_COOKIE['u_id'];
-	$Tel=$_POST["Tel"];
-	$Address1=$_POST["Address1"];
-	$Address2=$_POST["Address2"];
-	$Address3=$_POST["Address3"];
     // 创建连接
     $conn = mysqli_connect($servername, $username, $password, $dbname);
     
@@ -24,8 +20,8 @@
     
     
     //修改用户信息
-    if($Tel!=NULL){
-        $sql = "UPDATE userinfo SET Tel='$Tel' WHERE UserNo=$_userid";
+    if($_POST[Tel]!=NULL){
+        $sql = "UPDATE userinfo SET Tel='$_POST[Tel]' WHERE UserNo=$_userid";
         if (mysqli_query($conn, $sql))
         {
             echo "电话修改成功！";
@@ -35,35 +31,35 @@
             echo "Error: " . $sql . "<br>" . mysqli_error($conn);
         }
     }
-    if($Address1!=NULL){
-        $sql1 = "UPDATE userinfo SET Address1='$Address1' WHERE UserNo=$_userid";
-        if (mysqli_query($conn, $sql)&&mysqli_query($conn, $sql1))
+    if($_POST[Address1]!=NULL){
+        $sql1 = "UPDATE userinfo SET Address1='$_POST[Address1]' WHERE UserNo=$_userid";
+        if (mysqli_query($conn, $sql1))
         {
             echo "地址1修改成功！";
             echo "<br>";
         } else {
             echo "修改失败！". "<br>";
-            echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+            echo "Error: " . $sql1 . "<br>" . mysqli_error($conn);
         }}
-    if($Address2!=NULL){
-        $sql2 = "UPDATE userinfo SET Address2='$Address2' WHERE UserNo=$_userid";
-        if (mysqli_query($conn, $sql)&&mysqli_query($conn, $sql2))
+    if($_POST[Address2]!=NULL){
+        $sql2 = "UPDATE userinfo SET Address2='$_POST[Address2]' WHERE UserNo=$_userid";
+        if (mysqli_query($conn, $sql2))
         {
             echo "地址2修改成功！";
             echo "<br>";
         } else {
             echo "修改失败！". "<br>";
-            echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+            echo "Error: " . $sql2 . "<br>" . mysqli_error($conn);
         }}
-    if($Address3!=NULL){
-        $sql3 = "UPDATE userinfo SET Address3='$Address3' WHERE UserNo=$_userid";
-        if (mysqli_query($conn, $sql)&&mysqli_query($conn, $sql3))
+    if($_POST[Address3]!=NULL){
+        $sql3 = "UPDATE userinfo SET Address3='$_POST[Address3]' WHERE UserNo=$_userid";
+        if (mysqli_query($conn, $sql3))
         {
             echo "地址3修改成功！";
             echo "<br>";
         } else {
             echo "修改失败！". "<br>";
-            echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+            echo "Error: " . $sql3 . "<br>" . mysqli_error($conn);
         }}
     
     //显示修改过的

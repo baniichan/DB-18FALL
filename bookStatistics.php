@@ -29,6 +29,7 @@
 </head>
 
 <body>
+	<a href="manage_book.html" style="margin-left:10px;">返回</a>
 	<table id="table">
 			<caption><h2>统计信息</tr></caption>
 			<tr class="firstrow">

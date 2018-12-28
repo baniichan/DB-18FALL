@@ -78,7 +78,7 @@
 			 }
 		</script>
 </head>
-
+<a href="manage_book.html" style="margin-left:10px;">返回</a>
 <body>
 		<table id = "table">
 		<caption><h2>图书列表</h2></caption>

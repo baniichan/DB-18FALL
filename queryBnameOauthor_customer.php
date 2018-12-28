@@ -3,14 +3,43 @@
 	<head>
 		<meta charset="utf-8">
 		<title>图书数据库管理系统</title>
+		<style>
+			#table{
+				margin:auto;
+				width:75%;
+				border-collapse:collapse;
+			}
+			#table td
+			{
+				border: 1px solid DarkGray;
+				padding-left:10px;
+				padding-top:5px;
+				padding-bottom:5px;
+				padding-right:5px;
+			}
+			#table tr.firstrow
+			{
+				font-weight:bold;
+			}
+			a:link {color:mediumblue;}      
+			a:visited {color:mediumblue;} 
+			a:hover {color:darkblue;}
+			a:active {color:darkblue;}
+		</style>
 	</head> 
-
 	<body>
-		<h1>查询结果</h1>
+		<table id="table">
+			<caption><h2>查询结果</tr></caption>
+			<tr class="firstrow">
+				<td>ISBN</td>
+				<td>书名</td>
+				<td>作者</td>
+				<td>出版社</td>
+				<td>类型</td>
+				<td>详情</td>
+			</tr>
 
 <?php
-	global $a;
-	global $b;
 	$a=$_POST["bookname"];
 	$b=$_POST["authorname"];
 /*———————————————————————————————————————————————————————————————————*/
@@ -27,39 +56,36 @@
 		die("Connection failed: " . mysqli_connect_error());}
 /*———————————————————————————————————————————————————————————————————*/	
 	$sql = "
-		SELECT bookInfo.ISBN, bookInfo.BookName, author.Author, bookInfo.Press, bookInfo.Price, bookInfo.SummaryCN, bookInfo.SummaryEN
+		SELECT bookInfo.ISBN, bookInfo.BookName, author.Author, bookInfo.Press, bookInfo.type
 		FROM bookInfo INNER JOIN author ON bookInfo.ISBN = author.ISBN
 		WHERE (((bookInfo.BookName is null) or (bookInfo.BookName Like '%$a%')) and ((author.Author is null) or(author.Author Like '%$b%')));
 	";
 	$result = mysqli_query($conn,$sql);	// mysqli_query，在数据库上执行查询。
-
-	echo '<table border="1" width="900" align="center" bgcolor="grey" cellpadding="10">';	// 表格样式
-		echo '<caption><h1>列表</h1></caption>';	// 表格标题
-		echo '<tr bgcolor="#dddddd">';	// 列属性
-			echo '<th>ISBN</th><th>书名</th><th>作者</th><th>出版社</th><th>价格</th><th>中文简介</th><th>英文简介</th>';
-		echo '</tr>';
-		
-	$list=mysqli_fetch_all($result);	// mysqli_fetch_all，抓取所有的结果行并且以关联数据，数值索引数组，或者两者皆有的方式返回结果集。
-	
-	// 表格内容——查询结果
-	for($row=0;$row<count($list);$row++){
+	// 显示结果
+	while ($row = mysqli_fetch_array($result)) {
 		echo '<tr>';
-		//使用内层循环遍历数组$list中子数组的每个元素,使用count()函数控制循环次数
-		for($col=0;$col<count($list[$row]);$col++){ 
-			if ($col==0 or $col==2 or $col==4 or $col==6){
-				echo '<td bgcolor="lightblue">'.$list[$row][$col].'</td>';
-			}
-			else{
-				echo '<td bgcolor="pink">'.$list[$row][$col].'</td>';
-			}
-					
-		}
+			echo '<td style="width:10%;">' . $row['ISBN'] . '</td>';
+			$isbn = $row['ISBN'];
+			echo '<td style="width:20%;">' . $row['BookName'] . '</td>';
+			echo '<td style="width:15%;">';
+				$result2 = mysqli_query($conn,"SELECT Author from author WHERE ISBN = $isbn ");
+				while($row2 = mysqli_fetch_array($result2)){
+					echo $row2['Author']. '&nbsp;&nbsp;';
+				}
+			echo '</td>';
+			echo '<td style="width:15%;">' . $row['Press'] . '</td>';
+			echo '<td style="width:10%;">' . $row['type'] . '</td>';
+		//	该书详情
+			echo '<form name=form1 action="deleteBookEdit.php" method="post">';
+				echo '<input name="ISBN" value=' . $row['ISBN'] . '   type="hidden">';
+				echo  '<td style="width:5%;">' . '<input name="submit" type="submit" value="查看/编辑">';
+			echo '</form>';
 		echo '</tr>';
-	}
-	echo '</table>';
+	};
 /*———————————————————————————————————————————————————————————————————*/			
 	mysqli_close($conn); 
 ?>
-
+			
+		</table>
 	</body> 
 </html>

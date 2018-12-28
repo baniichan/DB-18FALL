@@ -7,7 +7,6 @@
 			#table
 			{
 				margin:auto;
-				width:80%;
 				border-collapse:collapse;
 			}
 			#table tr.firstrow
@@ -30,17 +29,13 @@
 	</head>
 	
 	<body>
-		<table id = "table">
-		<caption><h2>订单详情</h2></caption>
+		<table id = "table" style="width:50%;">
+		<caption><h2>用户信息</h2></caption>
 			<tr class="firstrow">
-				<td style="width:10%;">ISBN</td>
-				<td style="width:20%;">书名</td>
-				<td style="width:5%;">数量</td>
-				<td style="width:7%;">姓名</td>
-				<td style-"width:10%;">电话</td>
-				<td style="width:40%;">地址</td>
-		</tr>
-		
+				<td style="width:10%;">姓名</td>
+				<td style-"width:5%;">电话</td>
+				<td style="width:60%;">地址</td>
+		</tr>	
 <?php
 	$orderno = $_POST['OrderNo'];
 	$userno = $_POST['UserNo'];
@@ -57,31 +52,46 @@
 	}
 	
 	/* 查询数据库 */
-	$sql1 = "SELECT * FROM orderdetail WHERE OrderNo = $orderno";
-	$sql4 = "SELECT address FROM orderall WHERE OrderNo = $orderno";
-	$sql3 = "SELECT UserName, Tel FROM userinfo WHERE UserNo = '$userno'";
+	$sql1 = "SELECT address FROM orderall WHERE OrderNo = $orderno";
+	$sql2 = "SELECT UserName, Tel FROM userinfo WHERE UserNo = '$userno'";
+
 	$result1 = mysqli_query($conn,$sql1);
-	$result4 = mysqli_query($conn,$sql4);
-	$result3 = mysqli_query($conn,$sql3);
+	$result2 = mysqli_query($conn,$sql2);
 	/* 显示信息 */
-	while (($row1 = mysqli_fetch_array($result1)) && ($row4 = mysqli_fetch_array($result4)) && ($row3 = mysqli_fetch_array($result3))) {
+	while (($row1 = mysqli_fetch_array($result1)) && ($row2 = mysqli_fetch_array($result2))) {
 		echo '<tr>';
-			echo '<td>' . $row1['ISBN'] . '</td>';
-			$isbn = $row1['ISBN'];
-			$sql2 = "SELECT BookName FROM bookinfo WHERE ISBN = $isbn";
-			$result2 = mysqli_query($conn,$sql2);
-			while ($row2 = mysqli_fetch_array($result2)){
-				echo '<td>' . $row2['BookName']. '</td>';
-			}
-			echo '<td>' . $row1['Quantity'] . '</td>';
-			echo '<td>' . $row3['UserName'] . '</td>';
-			echo '<td>' . $row3['Tel'] . '</td>';
-			echo '<td>' . $row4['address'] . '</td>';
+			echo '<td>' . $row2['UserName'] . '</td>';
+			echo '<td>' . $row2['Tel'] . '</td>';
+			echo '<td>' . $row1['address'] . '</td>';
 		echo '</tr>';
 	};
-	
-	/* 断开连接 */
-	mysqli_close($conn);
+?>
+		</table>
+		<br>
+		<table id = "table" style="width:70%">
+		<caption><h2>详细订单</h2></caption>
+			<tr class="firstrow">
+				<td style="width:5%">详单号</td>
+				<td style="width:10%;">ISBN</td>
+				<td style="width:20%;">书名</td>
+				<td style="width:5%;">数量</td>
+		</tr>
+<?php
+	$sql3 = "SELECT * FROM orderdetail WHERE OrderNo = $orderno";
+	$result3 = mysqli_query($conn,$sql3);
+	while ($row3 = mysqli_fetch_array($result3)){
+		echo '<tr>';
+			echo '<td>' . $row3['OrderDetailNo'] . '</td>';
+			echo '<td>' . $row3['ISBN'] . '</td>';
+				$isbn = $row3['ISBN'];
+				$sql4 = "SELECT BookName FROM bookinfo WHERE ISBN = $isbn";
+				$result4 = mysqli_query($conn,$sql4);
+				while ($row4 = mysqli_fetch_array($result4)){
+					echo '<td>' . $row4['BookName']. '</td>';
+				}
+			echo '<td>' . $row3['Quantity'] . '</td>';
+		echo '</tr>';
+	}
 ?>
 		</table>
 	</body>
