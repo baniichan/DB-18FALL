@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 	<head>
-		<title>待处理订单</title>
+		<title>待发货订单</title>
 		<meta charset="utf-8">
 		<style>
 			#table
@@ -30,8 +30,9 @@
 	</head>
 	
 	<body>
+		<a href="manage_order.html" style="margin-left:10px;">返回</a>
 		<table id = "table">
-		<caption><h2>待处理订单</h2></caption>
+		<caption><h2>待发货订单</h2></caption>
 			<tr class="firstrow">
 				<td style="width:8%">订单号</td>
 				<td style="width:8%">用户编号</td>

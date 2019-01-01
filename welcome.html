@@ -4,28 +4,42 @@
 <meta charset="utf-8">
 <title>个人主页</title>
 <style>
-	a:link {color:mediumblue;}      
-	a:visited {color:mediumblue;} 
-	a:hover {color:darkblue;}
-	a:active {color:darkblue;}	
-	div#content
-	{
-		text-align: center;
-	}
+	a:link {color:white;}      
+	a:visited {color:white;} 
+	a:hover {color:white;}
+	a:active {color:white;}	
 </style>
 </head>
 
 <body>
-	<div id="content">
-		<h1>welcome!</h1>
-		<hr>
-		<h2><a href="queryBookInfo_customer.html">查询图书信息</a></h2>
-		<h2><a href="shopping.html">购买图书</a></h2>
-        <h2><a href="customer_info.php">个人信息</a></h2>
-        <h2><a href="customer_interest2.php">猜你喜欢</a></h2>
-        <h2><a href="feedback.php">年度书单</a></h2>
-        <h2><a href="grade.php">购买记录及评分</a></h2>
-		<p><a href="logout_customer.php">退出</a></p>
+	<div id="header" style="margin:auto;background-color:#5E646A;width:450px;height:70px;text-align: center;font-size:35px;font-weight: bold;color:#ffffff;letter-spacing:20px;text-indent: 45px; line-height:200%;margin-top:50px;"> 欢迎您!<a href="logout_customer.php" style="text-decoration: none;font-size:20px;"><span style="color:#000;letter-spacing:1px;font-size:18px;">退出</span></a></div>
+	<div id="left" style="float:left;">
+		<div id="green" style="background-color:#68AE00;height:100px;width:200px;margin-left:450px;margin-top:50px;text-align:center;letter-spacing:5px;line-height:625%">
+			<a href="queryBookInfo_customer.html" style="text-decoration: none;font-size:20px;">查询图书信息</a>
+		</div>
+		<div id="blue" style="background-color:#337AB7;height:100px;width:200px;margin-left:450px;margin-top:50px;text-align:center;letter-spacing:5px;line-height:625%">
+			<a href="shopping.html" style="text-decoration: none;font-size:20px;">购买图书</a>
+		</div>
+		<div id="red" style="background-color: #EC5D5D; height: 100px; width: 200px; margin-left: 450px; margin-top: 50px; text-align: center; letter-spacing: 5px; line-height: 625%">
+			<a href="showAllOrder_Customer.php" style="text-decoration: none;font-size:20px;">查看订单</a>
+		</div>
+		<div id="orange" style="background-color:#FC8213;height:100px;width:200px;margin-left:450px;margin-top:50px;text-align:center;letter-spacing:5px;line-height:625%">
+			<a href="grade.php" style="text-decoration: none;font-size:20px;">已购图书及评分</a>
+		</div>
+	</div>
+	<div id="right" style="float:left;">
+		<div id="orange2" style="background-color:#FC8213;height:100px;width:200px;margin-left:50px;margin-top:50px;text-align:center;letter-spacing:5px;line-height:625%">
+			<a href="customer_info.php" style="text-decoration: none;font-size:20px;">个人信息及修改</a>
+		</div>
+		<div id="red2" style="background-color: #EC5D5D; height: 100px; width: 200px; margin-left: 50px; margin-top: 50px; text-align: center; letter-spacing: 5px; line-height: 625%">
+			<a href="customer_interest2.php" style="text-decoration: none;font-size:20px;">猜你喜欢</a>
+		</div>
+		<div id="blue2" style="background-color:#337AB7;height:100px;width:200px;margin-left:50px;margin-top:50px;text-align:center;letter-spacing:5px;line-height:625%">
+			<a href="feedback.php" style="text-decoration: none;font-size:20px;">年度书单</a>
+		</div>
+		<div id="green2" style="background-color: #68AE00; height: 100px; width: 200px; margin-left: 50px; margin-top: 50px; text-align: center; letter-spacing: 5px; line-height: 625%">
+			<a href="chat.php" style="text-decoration: none;font-size:20px;">留言</a> 
+		</div>
 	</div>
 </body>
 </html>

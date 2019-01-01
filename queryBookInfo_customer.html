@@ -4,26 +4,36 @@
 		<meta charset="utf-8">
 		<title>图书数据库管理系统</title>
 	</head>
+	<style>
+		#content{
+			font-size:20px;
+		}
+		a:link {color:mediumblue;}      
+		a:visited {color:mediumblue;} 
+		a:hover {color:darkblue;}
+		a:active {color:darkblue;}	
+	</style>
 	<body>
-		<p>请在下方输入相关信息进行查询</p>
+		<p style="margin:10px;"> <a href="welcome.html">返回</a> </p>
 		<center>
-			<p>根据书名模糊查书相关信息</p>
+		<h1>请输入相关信息进行查询</h1><br>
+			<div id="content">
+			<p><strong>根据书名模糊查询</strong></p>
 			<form action="queryBname_customer.php" method="post">
 				书名: <input type="text" name="bookname">
 				<input name="1" type="submit" value="提交">
 				<input name="reset" type="reset" value="重置">
-			</form>
-		</center>
-		<center>
-			<p>根据书名或作者名模糊查相关信息</p>
+			</form><br>
+			<p><strong>根据作者或书名和作者查询</strong></p>
 			<form action="queryBnameOauthor_customer.php" method="post">
 				书名: <input type="text" name="bookname">
-				作者名: <input type="text" name="authorname">
+				作者: <input type="text" name="authorname" placeholder="必填" required>
 				<input name="1" type="submit" value="提交">
 				<input name="reset" type="reset" value="重置">
-			</form>
+			</form><br><br>
+			</div>
+		<p style="font-size:20px;"><a href="deleteBookShow.php">查看全部图书</a></p>
 		</center>
-		<p><a href="welcome.html">首页</a></p>
 	</body>
 </html>
 

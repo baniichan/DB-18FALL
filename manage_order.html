@@ -21,10 +21,10 @@
 			line-height:500%
 		}
 		.sub{
-			line-height:400%;
+			line-height:300%;
 		}
 		.block{
-			margin-top:165px;
+			margin-top:90px;
 		}
 		a:link {color:black;}      
 		a:visited {color:black;} 
@@ -42,15 +42,19 @@
 				<dt><a href="manage_book.html" style="text-decoration: none;">图书管理</a></dt>
 				<dt><a href="manage_order.html" style="font-weight:bold;" >销售管理</a></dt>
 				<dt><a href="manage_user.html" style="text-decoration: none;">会员管理</a></dt>
-				<dt><a href="" style="text-decoration: none;">留言管理</a></dt>
+				<dt><a href="manage_message.html" style="text-decoration: none;">留言管理</a></dt>
 			</dl>
 		</div>
 		<div id="content" style="background-color:#add8e6;height:480px;width:300px;float:left;">
 				<dl class="block">
-					<dt class="sub"><a href="manageOrder.php">待处理订单</a></dt>
-					<dt class="sub"><a href="orderStatus.php">订单状态</a></dt>
+					<dt class="sub"><a href="manageOrder.php">待发货订单</a></dt>
+					<dt class="sub"><a href="application.php">申请退货的订单</a></dt>
+					<dt class="sub"><a href="orderStatus.php">待收货订单</a></dt>
+					<dt class="sub"><a href="completedOrder.php">已完成的订单</a></dt>
+					<dt class="sub"><a href="graph.html">销量可视化</a></dt>
 				</dl>
 		</div>
+		<a href="logout_admin.php"><p style="font-size:18px;position:absolute;left:665px;top:540px;">退出</p></a>
 </div>
 </body>
 </html>

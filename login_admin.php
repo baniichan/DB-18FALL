@@ -8,6 +8,8 @@
 	<body>
 		
 <?php
+	$_adminid;
+	
 	$servername = "localhost";
 	$username = "root";
 	$password = "root";
@@ -35,6 +37,11 @@
 			WHERE AdminName='$_POST[UserName]'and AdminPassword='$_POST[Passport]'");
 		if(mysqli_num_rows($result)>0){
 			//	跳转至用户欢迎页
+			$sql2 = mysqli_query($conn,"SELECT AdminNo FROM adminaccount WHERE AdminName='$_POST[UserName]'and AdminPassword='$_POST[Passport]'");
+			while($row2 = mysqli_fetch_assoc($sql2)){
+					$_adminid=$row2["AdminNo"];
+					setcookie('a_id',$_adminid);
+				}
 			header("Location: manage_book.html"); 
 		} 
 		else {

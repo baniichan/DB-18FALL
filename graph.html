@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>数据可视化查询界面</title>
+
+<!--传入年份用的-->
+	</head>
+	<body>
+		<center>
+		<h2>按月</h2>
+		<form action="echarts.php" method="post">
+			<p>输入查询年份：
+			<input name="year" type="text" size="20" maxlength="10"></p>
+			<p><input name="submit" type="submit" value="提交"></p>
+		</form>
+		<br><br>
+		<h2>按类型</h2>
+		<form action="" name="graph" method="post" enctype="multipart/form-data">
+			<p>输入查询年份：
+			<input name="year" type="text" size="6" maxlength="10"></p>
+			<button onclick="bar()">绘制柱状图/折线图</button>
+			<button onclick="pie()">绘制饼图/漏斗图</button>
+			<p> <input name="submit" type="hidden" value="确定"></p>
+			<p><a href="manage_order.html">返回</a></p>
+		</form>	
+		</center>
+	</body>
+	<script>
+    function bar()
+	{
+//        document.("表单的name值").action
+//        document.("表单的name值").submit
+        document.graph.action="graph_bar.php";
+        document.graph.submit();
+    }
+
+   // function pie() 
+	{
+        document.graph.action = "graph_pie.php";
+        document.graph.submit();
+    }
+</script>
+</html>
+

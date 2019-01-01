@@ -4,13 +4,6 @@
 		<title>订单状态</title>
 		<meta charset="utf-8">
 		<style>
-			#link
-			{
-				text-align:center;
-				font-size:18px;
-				margin:10px;
-				margin-top:40px;
-			}
 			#table
 			{
 				margin:auto;
@@ -37,12 +30,9 @@
 	</head>
 	
 	<body>
-		<div id = "link">
-			<a href="orderStatus.php">待收货的订单</a>&nbsp;&nbsp;&nbsp;
-			<a href="completedOrder.php">已完成的订单</a>
-		</div>
+		<a href="manage_order.html" style="margin-left:10px;">返回</a>
 		<table id = "table">
-		<caption><h2>待收货的订单</h2></caption>
+		<caption><h2>待收货订单</h2></caption>
 			<tr class="firstrow">
 				<td style="width:8%">订单号</td>
 				<td style="width:8%">用户编号</td>
